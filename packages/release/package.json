@@ -1,5 +1,6 @@
 {
   "name": "@nx-plugin/release",
+  "description": "Setup semantic release for nx workspace",
   "version": "0.0.1",
   "main": "src/index.js",
   "generators": "./generators.json",
