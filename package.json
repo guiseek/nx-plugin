@@ -4,8 +4,13 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "format": "nx format:check",
+    "test": "nx affected:test --base origin/main",
+    "lint": "nx affected:lint --base origin/main",
+    "build": "nx affected:build --base origin/main",
+    "prerelease": "npm run build",
+    "release": "nx affected --target release --base origin/main",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "devDependencies": {
@@ -34,6 +39,7 @@
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "14.5.1",
     "prettier": "^2.6.2",
+    "semantic-release": "~19.0.3",
     "stream-buffers": "^3.0.2",
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",

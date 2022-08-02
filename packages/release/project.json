@@ -54,6 +54,12 @@
         "jestConfig": "packages/release/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx semantic-release -e ./packages/release/.releaserc.json"
+      }
     }
   },
   "tags": ["type:plugin"]

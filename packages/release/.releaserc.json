@@ -1,0 +1,19 @@
+{
+  "extends": "../../.releaserc.json",
+  "tagFormat": "release-v${version}",
+  "plugins": [
+    [
+      "@nx-plugin/release",
+      {
+        "project": "release"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "dist/packages/release"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
