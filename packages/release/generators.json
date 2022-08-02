@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "release",
+  "version": "0.0.1",
+  "generators": {
+    "semantic": {
+      "factory": "./src/generators/semantic/generator",
+      "schema": "./src/generators/semantic/schema.json",
+      "description": "Setup Semantic Release"
+    }
+  }
+}

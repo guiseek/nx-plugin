@@ -1,0 +1,13 @@
+{
+  "extends": "<%= offsetFromRoot %>.releaserc.json",
+  "tagFormat": "<%= project %>-v${version}",
+  "plugins": [
+    ["@nx-plugin/release", {
+      "project": "<%= project %>"
+    }],
+    ["@semantic-release/npm", {
+      "pkgRoot": "<%= projectDist %>"
+    }],
+    "@semantic-release/github"
+  ]
+}

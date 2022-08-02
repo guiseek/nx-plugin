@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "angular": "packages/angular",
-    "angular-e2e": "e2e/angular-e2e"
+    "angular-e2e": "e2e/angular-e2e",
+    "release": "packages/release",
+    "release-e2e": "e2e/release-e2e"
   }
 }
