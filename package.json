@@ -7,9 +7,9 @@
     "format": "nx format:check --base origin/main",
     "test": "nx affected:test --base origin/main",
     "lint": "nx affected:lint --base origin/main",
-    "build": "nx affected:build --base origin/main",
+    "build": "nx affected:build --all --base origin/main",
     "prerelease": "npm run build",
-    "release": "nx affected --target release --base origin/main",
+    "release": "nx affected --target release --all --base origin/main",
     "semantic-release": "semantic-release"
   },
   "private": true,
