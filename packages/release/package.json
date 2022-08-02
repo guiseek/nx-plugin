@@ -3,6 +3,11 @@
   "description": "Setup semantic release for nx workspace",
   "version": "0.0.1",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guiseek/nx-plugin.git",
+    "directory": "packages/release"
+  },
   "generators": "./generators.json",
   "executors": "./executors.json"
 }
