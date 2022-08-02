@@ -1,34 +1,34 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/release/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugin/release/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/release",
-        "main": "packages/release/src/index.ts",
-        "tsConfig": "packages/release/tsconfig.lib.json",
+        "outputPath": "dist/packages/plugin/release",
+        "main": "packages/plugin/release/src/index.ts",
+        "tsConfig": "packages/plugin/release/tsconfig.lib.json",
         "assets": [
-          "packages/release/*.md",
+          "packages/plugin/release/*.md",
           {
-            "input": "./packages/release/src",
+            "input": "./packages/plugin/release/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./packages/release/src",
+            "input": "./packages/plugin/release/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./packages/release",
+            "input": "./packages/plugin/release",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./packages/release",
+            "input": "./packages/plugin/release",
             "glob": "executors.json",
             "output": "."
           }
@@ -40,25 +40,25 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/release/**/*.ts",
-          "packages/release/generators.json",
-          "packages/release/executors.json",
-          "packages/release/package.json"
+          "packages/plugin/release/**/*.ts",
+          "packages/plugin/release/generators.json",
+          "packages/plugin/release/executors.json",
+          "packages/plugin/release/package.json"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/release"],
+      "outputs": ["coverage/packages/plugin/release"],
       "options": {
-        "jestConfig": "packages/release/jest.config.ts",
+        "jestConfig": "packages/plugin/release/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "release": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "command": "npx semantic-release -e ./packages/release/.releaserc.json"
+        "command": "npx semantic-release -e ./packages/plugin/release/.releaserc.json"
       }
     }
   },

@@ -6,11 +6,11 @@
     "e2e": {
       "executor": "@nrwl/nx-plugin:e2e",
       "options": {
-        "target": "angular:build",
+        "target": "plugin-angular:build",
         "jestConfig": "e2e/angular-e2e/jest.config.ts"
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["angular"]
+  "implicitDependencies": ["plugin-angular"]
 }

@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'angular',
-  preset: '../../jest.preset.js',
+  displayName: 'plugin-release',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]s$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/packages/angular',
+  coverageDirectory: '../../../coverage/packages/plugin/release',
 };
