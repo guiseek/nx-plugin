@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
-    "format": "nx format:check",
+    "format": "nx format:check --base origin/main",
     "test": "nx affected:test --base origin/main",
     "lint": "nx affected:lint --base origin/main",
     "build": "nx affected:build --base origin/main",
