@@ -28,7 +28,9 @@ export const wrapPlugin = (plugin: PluginFunction) => {
         "Bypassing commit filtering; no 'project' in configuration..."
       );
     } else {
-      logger.log(`Filter commits to those that affect the project: ${project}...`);
+      logger.log(
+        `Filter commits to those that affect the project: ${project}...`
+      );
 
       const paths = await getProjectChangePaths(project);
       logger.log(`Resolved to paths: ${paths.join(', ')}...`);

@@ -1,34 +1,34 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/angular/src",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugin/angular/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/angular",
-        "main": "packages/angular/src/index.ts",
-        "tsConfig": "packages/angular/tsconfig.lib.json",
+        "outputPath": "dist/packages/plugin/angular",
+        "main": "packages/plugin/angular/src/index.ts",
+        "tsConfig": "packages/plugin/angular/tsconfig.lib.json",
         "assets": [
-          "packages/angular/*.md",
+          "packages/plugin/angular/*.md",
           {
-            "input": "./packages/angular/src",
+            "input": "./packages/plugin/angular/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./packages/angular/src",
+            "input": "./packages/plugin/angular/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./packages/angular",
+            "input": "./packages/plugin/angular",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./packages/angular",
+            "input": "./packages/plugin/angular",
             "glob": "executors.json",
             "output": "."
           }
@@ -40,18 +40,18 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/angular/**/*.ts",
-          "packages/angular/generators.json",
-          "packages/angular/executors.json",
-          "packages/angular/package.json"
+          "packages/plugin/angular/**/*.ts",
+          "packages/plugin/angular/generators.json",
+          "packages/plugin/angular/executors.json",
+          "packages/plugin/angular/package.json"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/angular"],
+      "outputs": ["coverage/packages/plugin/angular"],
       "options": {
-        "jestConfig": "packages/angular/jest.config.ts",
+        "jestConfig": "packages/plugin/angular/jest.config.ts",
         "passWithNoTests": true
       }
     }

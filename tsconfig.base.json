@@ -15,8 +15,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-plugin/angular": ["packages/angular/src/index.ts"],
-      "@nx-plugin/release": ["packages/release/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

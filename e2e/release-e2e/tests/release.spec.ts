@@ -14,7 +14,7 @@ describe('release e2e', () => {
   // on a unique project in the workspace, such that they
   // are not dependant on one another.
   beforeAll(() => {
-    ensureNxProject('@nx-plugin/release', 'dist/packages/release');
+    ensureNxProject('@nx-plugin/release', 'dist/packages/plugin/release');
   });
 
   afterAll(() => {

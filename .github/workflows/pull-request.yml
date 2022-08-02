@@ -24,3 +24,9 @@ jobs:
 
       - name: Unit Tests
         run: 'npm run test -- --base=origin/main --plain'
+
+      - name: Build, Release on GitHub & Publish to NPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: 'npm run release -- --base=origin/main --plain'
