@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
 
       - name: Install Dependencies
         run: npm ci
