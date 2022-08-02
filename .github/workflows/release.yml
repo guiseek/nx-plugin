@@ -14,26 +14,22 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Install Dependencies
         run: npm ci
 
-      - name: Check Format
-        run: npm run format
-
       - name: Lint Workspace & Code
-        run: npm run lint
+        run: 'npm run lint -- --base=origin/main --plain'
 
       - name: Unit Tests
-        run: npm run test
+        run: 'npm run test -- --base=origin/main --plain'
 
       - name: Build, Release on GitHub & Publish to NPM
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm run release
+        run: 'npm run release -- --base=origin/main --plain'
