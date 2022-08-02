@@ -9,7 +9,7 @@
     "format": "nx format:check",
     "test": "nx affected:test",
     "lint": "nx affected:lint",
-    "prerelease": "npm affected:build",
+    "prerelease": "nx affected:build",
     "release": "nx affected --target release",
     "semantic-release": "semantic-release"
   },
