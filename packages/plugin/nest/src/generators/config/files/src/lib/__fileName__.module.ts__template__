@@ -1,0 +1,38 @@
+<% if (isGlobal) { %>
+import { Module, Global } from '@nestjs/common';
+<% } else { %>
+import { Module } from '@nestjs/common';
+<% } %>
+<% if (className === 'Config') { %>
+import { ConfigModule as NestConfigModule } from '@nestjs/config';
+<% } else { %>
+import { ConfigModule } from '@nestjs/config';
+<% } %>
+import { configuration } from './configuration';
+
+<% if (isGlobal) { %>
+@Global()
+<% } %>
+@Module({
+  imports: [
+<% if (className === 'Config') { %>
+    NestConfigModule.forRoot({
+<% } else { %>
+    ConfigModule.forRoot({
+<% } %>
+      load: [
+        () => {
+          return {
+            <%= configConstName %>_CONFIG: configuration('config/<%= configFileName %>.yaml'),
+          };
+        },
+      ],
+    }),
+  ],
+<% if (className === 'Config') { %>
+  exports: [NestConfigModule],
+<% } else { %>
+  exports: [ConfigModule],
+<% } %>
+})
+export class <%= className %>Module {}

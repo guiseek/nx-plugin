@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Config",
+  "title": "",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "project": {
+      "type": "string",
+      "description": "",
+      "aliases": ["projectName"],
+      "$default": {
+        "index": 1,
+        "$source": "projectName"
+      },
+      "x-prompt": "Which project do you want to add semantic release to?"
+    },
+    "envConfig": {
+      "type": "string",
+      "description": "",
+      "default": "env",
+      "x-prompt": "What env config name would you like to use?"
+    },
+    "isGlobal": {
+      "type": "boolean",
+      "description": "",
+      "x-prompt": "Expose as global module?"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the project (used for linting)",
+      "alias": "t"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the project is placed",
+      "alias": "d"
+    }
+  },
+  "required": ["name"]
+}

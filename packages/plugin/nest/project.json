@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugin/nest/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/plugin/nest",
+        "main": "packages/plugin/nest/src/index.ts",
+        "tsConfig": "packages/plugin/nest/tsconfig.lib.json",
+        "assets": [
+          "packages/plugin/nest/*.md",
+          {
+            "input": "./packages/plugin/nest/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/plugin/nest/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/plugin/nest",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/plugin/nest",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/plugin/nest/**/*.ts",
+          "packages/plugin/nest/generators.json",
+          "packages/plugin/nest/executors.json",
+          "packages/plugin/nest/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/plugin/nest"],
+      "options": {
+        "jestConfig": "packages/plugin/nest/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx semantic-release -e ./packages/plugin/nest/.releaserc.json"
+      }
+    }
+  },
+  "tags": []
+}

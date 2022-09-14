@@ -4,6 +4,8 @@
   "projects": {
     "angular-e2e": "e2e/angular-e2e",
     "plugin-angular": "packages/plugin/angular",
+    "plugin-nest": "packages/plugin/nest",
+    "plugin-nest-e2e": "e2e/plugin/nest-e2e",
     "plugin-release": "packages/plugin/release",
     "release-e2e": "e2e/release-e2e"
   }
