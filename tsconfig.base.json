@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-plugin/nest": ["packages/plugin/nest/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
