@@ -2,6 +2,11 @@
   "name": "@nx-plugin/nest",
   "version": "0.0.1",
   "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guiseek/nx-plugin.git",
+    "directory": "packages/plugin/nest"
+  },
   "generators": "./generators.json",
   "executors": "./executors.json"
 }
