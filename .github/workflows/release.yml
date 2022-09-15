@@ -4,18 +4,18 @@ on:
   push:
     branches:
       - main
-
 env:
   CI: true
 
 jobs:
-  release:
-    name: Build, Release & Publish
+  check:
+    name: Checklist
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Install Dependencies
@@ -23,7 +23,7 @@ jobs:
 
       - uses: mansagroup/nrwl-nx-action@v2
         with:
-          targets: release
+          targets: test,release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
