@@ -9,8 +9,6 @@
     "format": "nx format:check",
     "test": "nx affected:test",
     "lint": "nx affected:lint",
-    "prerelease": "nx affected:build --base=origin/main --plain",
-    "release": "nx affected --target release --base=origin/main --plain",
     "semantic-release": "semantic-release"
   },
   "private": false,

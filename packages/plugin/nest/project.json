@@ -57,6 +57,7 @@
     },
     "release": {
       "executor": "@nrwl/workspace:run-commands",
+      "dependsOn": ["^build"],
       "options": {
         "command": "npx semantic-release -e ./packages/plugin/nest/.releaserc.json"
       }

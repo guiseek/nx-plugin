@@ -19,14 +19,9 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Lint Workspace & Code
-        run: 'npm run lint -- --base=origin/main --plain'
-
-      - name: Unit Tests
-        run: 'npm run test -- --base=origin/main --plain'
-
-      - name: Build, Release on GitHub & Publish to NPM
+      - uses: mansagroup/nrwl-nx-action@v2
+        with:
+          targets: lint,test,build,release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: 'npm run release'
