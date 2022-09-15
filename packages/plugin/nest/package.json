@@ -1,12 +1,24 @@
 {
   "name": "@nx-plugin/nest",
   "version": "0.0.1",
-  "main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/guiseek/nx-plugin.git",
     "directory": "packages/plugin/nest"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Guilherme Siquinelli",
+    "email": "email@guiseek.dev",
+    "url": "https://guiseek.dev"
+  },
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/guiseek/nx-plugin/issues"
+  },
+  "main": "src/index.js",
   "generators": "./generators.json",
   "executors": "./executors.json"
 }
