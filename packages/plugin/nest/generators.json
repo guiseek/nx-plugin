@@ -2,6 +2,14 @@
   "$schema": "http://json-schema.org/schema",
   "name": "plugin-nest",
   "version": "0.0.1",
+  "schematics": {
+    "config": {
+      "factory": "./src/generators/config/generator.compat",
+      "schema": "./src/generators/config/schema.json",
+      "description": "Create and configure ConfigModule",
+      "hidden": true
+    }
+  },
   "generators": {
     "config": {
       "factory": "./src/generators/config/generator",
