@@ -1,13 +1,10 @@
-<% if (isGlobal) { %>
-import { Module, Global } from '@nestjs/common';
-<% } else { %>
-import { Module } from '@nestjs/common';
-<% } %>
-<% if (className === 'Config') { %>
-import { ConfigModule as NestConfigModule } from '@nestjs/config';
-<% } else { %>
-import { ConfigModule } from '@nestjs/config';
-<% } %>
+<% if (isGlobal) { %>import { Module, Global } from '@nestjs/common';
+<% } else { %>import { Module } from '@nestjs/common';<% } %>
+
+<% if (className === 'Config') { %>import { ConfigModule, ConfigService as NestConfigService } from '@nestjs/config';
+<% } else { %>import { ConfigModule, ConfigService } from '@nestjs/config';<% } %>
+
+import { <%= className %>Service } from './<%= fileName %>.service';
 import { configuration } from './configuration';
 
 <% if (isGlobal) { %>
@@ -15,11 +12,8 @@ import { configuration } from './configuration';
 <% } %>
 @Module({
   imports: [
-<% if (className === 'Config') { %>
-    NestConfigModule.forRoot({
-<% } else { %>
-    ConfigModule.forRoot({
-<% } %>
+<% if (className === 'Config') { %>    NestConfigModule.forRoot({
+<% } else { %>    ConfigModule.forRoot({<% } %>
       load: [
         () => {
           return {
@@ -29,10 +23,21 @@ import { configuration } from './configuration';
       ],
     }),
   ],
-<% if (className === 'Config') { %>
-  exports: [NestConfigModule],
-<% } else { %>
-  exports: [ConfigModule],
-<% } %>
+  providers: [
+<% if (className === 'Config') { %>    {
+      provide: <%= className %>Service,
+      useFactory: (service: NestConfigService) => {
+        return new <%= className %>Service(service);
+      },
+      inject: [NestConfigService],
+    },<% } else { %>{
+      provide: <%= className %>Service,
+      useFactory: (service: ConfigService) => {
+        return new <%= className %>Service(service);
+      },
+      inject: [ConfigService],
+    },<% } %>
+  ],
+  exports: [<%= className %>Service]
 })
 export class <%= className %>Module {}

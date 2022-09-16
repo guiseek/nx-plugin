@@ -11,13 +11,15 @@ import {
   addDependenciesToPackageJson,
 } from '@nrwl/devkit';
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
-import { libraryGenerator } from '@nrwl/nest/src/generators/library/library';
+import { libraryGenerator } from '@nrwl/nest';
 import { ConfigGeneratorSchema } from './schema';
 import { join } from 'path';
 
 interface NormalizedSchema extends ConfigGeneratorSchema {
   configFileName: string;
   configConstName: string;
+  configPropertyName: string;
+  configClassName: string;
   projectName: string;
   projectRoot: string;
   projectDirectory: string;
@@ -32,7 +34,12 @@ function normalizeOptions(
   const isGlobal = options.isGlobal ?? false;
 
   const config = names(options.envConfig ?? 'env');
-  const { fileName: configFileName, constantName: configConstName } = config;
+  const {
+    fileName: configFileName,
+    constantName: configConstName,
+    propertyName: configPropertyName,
+    className: configClassName,
+  } = config;
 
   const projectDirectory = options.directory
     ? `${names(options.directory).fileName}/${name}`
@@ -49,6 +56,8 @@ function normalizeOptions(
     isGlobal,
     configFileName,
     configConstName,
+    configPropertyName,
+    configClassName,
     projectName,
     projectRoot,
     projectDirectory,

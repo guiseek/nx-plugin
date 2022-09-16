@@ -6,8 +6,7 @@
     "config": {
       "factory": "./src/generators/config/generator.compat",
       "schema": "./src/generators/config/schema.json",
-      "description": "Create and configure ConfigModule",
-      "hidden": true
+      "description": "Create and configure ConfigModule"
     }
   },
   "generators": {
