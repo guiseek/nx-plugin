@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/guiseek/nx-plugin.git",
-    "directory": "packages/plugin/nest"
+    "url": "https://github.com/guiseek/nx-plugin.git"
   },
   "publishConfig": {
     "access": "public"

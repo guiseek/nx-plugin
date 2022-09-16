@@ -1,0 +1,19 @@
+import { ConfigService } from '@nestjs/config';
+import { <%= configClassName %>Config } from './interfaces/<%= configFileName %>-config';
+
+export class <%= className %>Service {
+  static <%= configConstName %>: <%= configClassName %>Config;
+
+  readonly <%= configPropertyName %>: <%= configClassName %>Config;
+
+  constructor(private readonly _configService: ConfigService) {
+    <%= className %>Service.<%= configConstName %> =
+      this._configService.getOrThrow<<%= configClassName %>Config>('<%= configConstName %>_CONFIG');
+
+    this.<%= configPropertyName %> = this._configService.getOrThrow<<%= configClassName %>Config>('<%= configConstName %>_CONFIG');
+  }
+
+  pick<K extends keyof Omit<this, 'pick'>>(scope: K, prop: keyof this[K]) {
+    return this[scope][prop];
+  }
+}

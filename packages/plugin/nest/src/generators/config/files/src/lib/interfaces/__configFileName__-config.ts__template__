@@ -1,0 +1,7 @@
+export interface JwtConfig {
+  secret: string
+}
+
+export interface <%= configClassName %>Config {
+  jwt: JwtConfig;
+}
