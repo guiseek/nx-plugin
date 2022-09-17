@@ -8,8 +8,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/plugin/nest",
-        "main": "packages/plugin/nest/src/index.ts",
         "tsConfig": "packages/plugin/nest/tsconfig.lib.json",
+        "packageJson": "packages/plugin/nest/package.json",
+        "main": "packages/plugin/nest/src/index.ts",
         "assets": [
           "packages/plugin/nest/*.md",
           {

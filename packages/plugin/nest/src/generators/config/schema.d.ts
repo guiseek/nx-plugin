@@ -6,3 +6,14 @@ export interface ConfigGeneratorSchema {
   envConfig?: string;
   directory?: string;
 }
+
+export interface ConfigGeneratorNormalizedSchema extends ConfigGeneratorSchema {
+  configFileName: string;
+  configConstName: string;
+  configPropertyName: string;
+  configClassName: string;
+  projectName: string;
+  projectRoot: string;
+  projectDirectory: string;
+  parsedTags: string[];
+}
