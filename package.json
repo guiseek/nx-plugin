@@ -11,6 +11,11 @@
     "lint": "nx affected:lint",
     "semantic-release": "semantic-release"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guiseek/nx-plugin.git"
+  },
+  "author": "Guilherme Siquinelli (https://guiseek.dev)",
   "private": false,
   "devDependencies": {
     "@nrwl/angular": "^14.5.2",
@@ -23,19 +28,19 @@
     "@nrwl/nest": "^14.7.5",
     "@nrwl/nx-plugin": "^14.5.1",
     "@nrwl/workspace": "14.5.1",
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/exec": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.0.5",
-    "@semantic-release/npm": "^9.0.1",
-    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/exec": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.2",
+    "@semantic-release/npm": "^7.1.3",
+    "@semantic-release/release-notes-generator": "^9.0.2",
     "@swc-node/register": "^1.4.2",
     "@swc/cli": "~0.1.55",
     "@swc/core": "^1.2.173",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
-    "@types/semantic-release": "^17.2.4",
+    "@types/semantic-release": "^17.2.0",
     "@types/split2": "^3.2.1",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
@@ -45,7 +50,6 @@
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "14.5.1",
     "prettier": "^2.6.2",
-    "semantic-release": "~19.0.3",
     "stream-buffers": "^3.0.2",
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
@@ -54,7 +58,7 @@
   },
   "dependencies": {
     "@swc/helpers": "~0.3.3",
-    "semantic-release": "^19.0.3",
+    "semantic-release": "^17.4.2",
     "split2": "^4.1.0",
     "tslib": "^2.3.0"
   }

@@ -3,6 +3,12 @@
   "description": "Setup semantic release for nx workspace",
   "version": "0.0.1",
   "main": "src/index.js",
+  "dependencies": {
+    "@semantic-release/commit-analyzer": "~8.0.1",
+    "@semantic-release/release-notes-generator": "~9.0.2",
+    "get-stream": "~6.0.0",
+    "split2": "~3.2.2"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/guiseek/nx-plugin.git",
