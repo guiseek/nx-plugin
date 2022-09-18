@@ -14,18 +14,20 @@ describe('semantic generator', () => {
   const options: SemanticReleaseGeneratorSchema = { project: 'test' };
 
   beforeEach(() => {
-    //
     appTree = createTreeWithEmptyWorkspace();
 
-    // prettier-ignore
-    addProjectConfiguration(
-      appTree,
-      'test',
-      { root: 'packages/test', projectType: 'library', targets: {
-          build: { executor: '@nrwl/node:package', options: {
-            outputPath: 'dist/packages/test' } } }
-      }
-    );
+    addProjectConfiguration(appTree, 'test', {
+      root: 'packages/test',
+      projectType: 'library',
+      targets: {
+        build: {
+          executor: '@nrwl/node:package',
+          options: {
+            outputPath: 'dist/packages/test',
+          },
+        },
+      },
+    });
   });
 
   it('should run successfully', async () => {
