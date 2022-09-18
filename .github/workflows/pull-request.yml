@@ -21,7 +21,7 @@ jobs:
 
       - uses: mansagroup/nrwl-nx-action@v2
         with:
-          targets: lint,test,release
+          targets: lint,test,build,release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
