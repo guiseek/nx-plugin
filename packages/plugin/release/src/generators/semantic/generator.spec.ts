@@ -1,13 +1,11 @@
 import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
 import { SemanticReleaseGeneratorSchema } from './schema';
-import generator from './generator';
 import {
   Tree,
-  readJson,
-  writeJson,
   addProjectConfiguration,
   readProjectConfiguration,
 } from '@nrwl/devkit';
+import generator from './generator';
 
 describe('semantic generator', () => {
   let appTree: Tree;
