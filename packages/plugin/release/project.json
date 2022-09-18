@@ -59,7 +59,7 @@
       "executor": "@nrwl/workspace:run-commands",
       "dependsOn": ["^build"],
       "options": {
-        "command": "npx semantic-release -e ./packages/plugin/release/.releaserc.json --debug --dry-run"
+        "command": "npx semantic-release -e ./packages/plugin/release/.releaserc.json"
       }
     }
   },
