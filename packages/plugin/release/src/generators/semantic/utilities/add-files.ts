@@ -5,6 +5,6 @@ import { join } from 'path';
 
 export function addFiles(tree: Tree, options: NormalizedSchema) {
   const tmplOpts = normalizeTemplateOptions(options);
-  const dirFiles = join(__dirname, 'files');
+  const dirFiles = join(__dirname, '..', 'files');
   generateFiles(tree, dirFiles, options.projectRoot, tmplOpts);
 }

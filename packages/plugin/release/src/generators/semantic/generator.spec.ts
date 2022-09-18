@@ -33,17 +33,6 @@ describe('semantic generator', () => {
     const config = readProjectConfiguration(appTree, 'test');
 
     expect(config.targets.release).toBeDefined();
-    expect(appTree.exists('.releaserc.json')).toBeTruthy();
     expect(appTree.exists('packages/test/.releaserc.json')).toBeTruthy();
-  });
-
-  it('should skip root .releaserc.json if present', async () => {
-    await generator(appTree, options);
-    const config = readProjectConfiguration(appTree, 'test');
-    const releaseConfig = { value: 'a' };
-    writeJson(appTree, '.releaserc.json', releaseConfig);
-
-    expect(config.targets.release).toBeDefined();
-    expect(readJson(appTree, '.releaserc.json')).toMatchObject(releaseConfig);
   });
 });
