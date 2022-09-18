@@ -1,13 +1,40 @@
 {
   "extends": "<%= offsetFromRoot %>.releaserc.json",
+  "repositoryUrl": "${githubUrl}",
+  "branches": [
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    { "name": "beta", "prerelease": true },
+    { "name": "alpha", "prerelease": true }
+  ],
   "tagFormat": "<%= project %>-v${version}",
   "plugins": [
-    ["@nx-plugin/release", {
-      "project": "<%= project %>"
-    }],
-    ["@semantic-release/npm", {
-      "pkgRoot": "<%= projectDist %>"
-    }],
-    "@semantic-release/github"
+    [
+      "@nx-plugin/release",
+      {
+        "project": "<%= project %>"
+      }
+    ],
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "<%= projectDist %>",
+        "tarballDir": "<%= projectDist %>"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "nx run <%= project %>:release --args=\"--version=${nextRelease.version}\""
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": "<%= projectDist %>/*.tgz"
+      }
+    ]
   ]
 }

@@ -1,5 +1,11 @@
 {
-  "extends": "../../../.releaserc.json",
+  "repositoryUrl": "https://github.com/guiseek/nx-plugin.git",
+  "branches": [
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    { "name": "beta", "prerelease": true },
+    { "name": "alpha", "prerelease": true }
+  ],
   "tagFormat": "plugin-release-v${version}",
   "plugins": [
     [
@@ -8,12 +14,26 @@
         "project": "plugin-release"
       }
     ],
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "dist/packages/plugin/release"
+        "pkgRoot": "dist/packages/plugin/release",
+        "tarballDir": "dist/packages/plugin/release"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "nx run plugin-release:release --args=\"--version=${nextRelease.version}\""
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": "dist/packages/plugin/release/*.tgz"
+      }
+    ]
   ]
 }

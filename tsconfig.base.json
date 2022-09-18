@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-plugin/release": ["packages/plugin/release/src/index.ts"],
       "@nx-plugin/nest": ["packages/plugin/nest/src/index.ts"]
     }
   },

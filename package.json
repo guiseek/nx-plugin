@@ -1,6 +1,6 @@
 {
   "name": "nx-plugin",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -11,13 +11,8 @@
     "lint": "nx affected:lint",
     "semantic-release": "semantic-release"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/guiseek/nx-plugin.git"
-  },
-  "author": "Guilherme Siquinelli (https://guiseek.dev)",
-  "private": false,
   "devDependencies": {
+    "@guiseek/tool-release": "^0.0.1",
     "@nrwl/angular": "^14.5.2",
     "@nrwl/cli": "14.5.1",
     "@nrwl/devkit": "14.5.1",

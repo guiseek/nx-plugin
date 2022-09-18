@@ -1,19 +1,32 @@
 {
   "name": "@nx-plugin/release",
   "description": "Setup semantic release for nx workspace",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "src/index.js",
-  "dependencies": {
-    "@semantic-release/commit-analyzer": "~8.0.1",
-    "@semantic-release/release-notes-generator": "~9.0.2",
-    "get-stream": "~6.0.0",
-    "split2": "~3.2.2"
-  },
+  "generators": "./generators.json",
+  "executors": "./executors.json",
   "repository": {
     "type": "git",
     "url": "https://github.com/guiseek/nx-plugin.git",
     "directory": "packages/plugin/release"
   },
-  "generators": "./generators.json",
-  "executors": "./executors.json"
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Guilherme Siquinelli",
+    "email": "email@guiseek.dev",
+    "url": "https://guiseek.dev"
+  },
+  "private": false,
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/guiseek/nx-plugin/issues"
+  },
+  "dependencies": {
+    "@semantic-release/commit-analyzer": "~8.0.1",
+    "@semantic-release/release-notes-generator": "~9.0.2",
+    "get-stream": "~6.0.0",
+    "split2": "~3.2.2"
+  }
 }

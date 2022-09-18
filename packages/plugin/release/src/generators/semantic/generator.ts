@@ -1,77 +1,11 @@
+import { Tree, formatFiles, installPackagesTask } from '@nrwl/devkit';
+import { SemanticReleaseGeneratorSchema } from './schema';
 import {
-  Tree,
-  names,
-  formatFiles,
-  generateFiles,
-  offsetFromRoot,
-  getWorkspaceLayout,
-  installPackagesTask,
-  readProjectConfiguration,
-  updateProjectConfiguration,
-  addDependenciesToPackageJson,
-} from '@nrwl/devkit';
-import { join } from 'path';
-import { SemanticReleaseGeneratorSchema, NormalizedSchema } from './schema';
-
-function normalizeOptions(
-  tree: Tree,
-  options: SemanticReleaseGeneratorSchema
-): NormalizedSchema {
-  const config = readProjectConfiguration(tree, options.project);
-
-  const { libsDir } = getWorkspaceLayout(tree);
-
-  const { build } = config.targets;
-
-  const projectDist = `dist/${libsDir}/${options.project}`;
-
-  return {
-    ...options,
-    projectRoot: config.root,
-    projectDist: build.options.outputPath ?? projectDist,
-  };
-}
-
-function addConfig(tree: Tree, options: NormalizedSchema) {
-  const config = readProjectConfiguration(tree, options.project);
-
-  const { build } = config.targets;
-
-  if (config.projectType !== 'library' || !build) {
-    throw 'This generator can only be run against buildable libraries.';
-  }
-
-  addDependenciesToPackageJson(tree, {}, { 'semantic-release': '~19.0.3' });
-
-  config.targets.release = {
-    executor: '@nrwl/workspace:run-commands',
-    options: {
-      command: `npx semantic-release -e ./${config.root}/.releaserc.json`,
-    },
-  };
-
-  updateProjectConfiguration(tree, options.project, config);
-}
-
-function addFiles(tree: Tree, options: NormalizedSchema) {
-  const offset = offsetFromRoot(options.projectRoot);
-  const values = names(options.project);
-  const tmplOpts = {
-    ...options,
-    ...values,
-    offsetFromRoot: offset,
-    template: '',
-    dot: '.',
-  };
-
-  const dirRootFiles = join(__dirname, 'root-files');
-  if (!tree.exists('.releaserc.json')) {
-    generateFiles(tree, dirRootFiles, '.', tmplOpts);
-  }
-
-  const dirFiles = join(__dirname, 'files');
-  generateFiles(tree, dirFiles, options.projectRoot, tmplOpts);
-}
+  addFiles,
+  addDependencies,
+  addConfiguration,
+  normalizeOptions,
+} from './utilities';
 
 export default async function (
   tree: Tree,
@@ -79,7 +13,20 @@ export default async function (
 ) {
   const normalizedOptions = normalizeOptions(tree, options);
 
-  addConfig(tree, normalizedOptions);
+  addConfiguration(tree, normalizedOptions);
+
+  const devDeps = {
+    'semantic-release': '^17.4.2',
+    '@semantic-release/changelog': '^5.0.1',
+    '@semantic-release/commit-analyzer': '^8.0.1',
+    '@semantic-release/exec': '^5.0.0',
+    '@semantic-release/git': '^9.0.0',
+    '@semantic-release/github': '^7.2.2',
+    '@semantic-release/npm': '^7.1.3',
+    '@semantic-release/release-notes-generator': '^9.0.2',
+  };
+
+  addDependencies(tree, {}, devDeps);
 
   addFiles(tree, normalizedOptions);
 

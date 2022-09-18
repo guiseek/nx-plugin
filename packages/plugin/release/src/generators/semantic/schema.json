@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
   "$id": "Semantic",
-  "title": "",
+  "title": "Setup semantic release for nx workspace",
   "type": "object",
   "properties": {
     "project": {
