@@ -1,5 +1,5 @@
 import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
-import { NodePackages } from '../../types/node-package';
+import { NodePackages } from '../types/node-package';
 import {
   Tree,
   installPackagesTask,

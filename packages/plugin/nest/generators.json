@@ -14,6 +14,11 @@
       "factory": "./src/generators/config/generator",
       "schema": "./src/generators/config/schema.json",
       "description": "Create and configure ConfigModule"
+    },
+    "auth": {
+      "factory": "./src/generators/auth/generator",
+      "schema": "./src/generators/auth/schema.json",
+      "description": "Authentication for NestJS"
     }
   }
 }
