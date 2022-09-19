@@ -4,9 +4,9 @@ import { join } from 'path';
 import {
   normalizeOptions,
   addAssetToProject,
-  updateDependencies,
   normalizeTemplateOptions,
 } from './utilities';
+import { updateDependencies } from '../utilities';
 import { ConfigGeneratorSchema } from './schema';
 
 export default async function (tree: Tree, options: ConfigGeneratorSchema) {

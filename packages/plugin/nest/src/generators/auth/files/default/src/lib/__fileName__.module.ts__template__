@@ -1,0 +1,30 @@
+import { PassportModule } from '@nestjs/passport';
+<% if (jwt) { %>import { JwtModule } from '@nestjs/jwt';<% } %>
+import { Module } from '@nestjs/common';
+import { LocalStrategy } from './strategies/local.strategy';
+<% if (jwt) { %>import { JwtStrategy } from './strategies/jwt.strategy';<% } %>
+<% if (jwt) { %>import { jwtConstants } from './config/constants';<% } %>
+import { <%= className %>Service } from './<%= fileName %>.service';
+import { <%= className %>Repository } from './<%= fileName %>.repository';
+import { <%= className %>Controller } from './<%= fileName %>.controller';
+
+@Module({
+  imports: [
+    PassportModule,
+    <% if (jwt) { %>JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '60s' },
+    })<% } %>
+  ],
+  controllers: [<%= className %>Controller],
+  providers: [
+    <%= className %>Repository,
+    <%= className %>Service,
+    LocalStrategy,
+<% if (jwt) { %>JwtStrategy,<% } %>
+  ],
+  exports: [
+    <%= className %>Service,
+  ],
+})
+export class <%= className %>Module {}

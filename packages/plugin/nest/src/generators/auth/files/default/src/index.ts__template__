@@ -1,0 +1,4 @@
+export * from './lib/<%= fileName %>.module';
+export * from './lib/<%= fileName %>.controller';
+export * from './lib/<%= fileName %>.repository';
+export * from './lib/<%= fileName %>.service';
