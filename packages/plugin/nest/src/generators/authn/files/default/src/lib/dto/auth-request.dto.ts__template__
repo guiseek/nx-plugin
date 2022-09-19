@@ -1,0 +1,3 @@
+import { User } from '../interfaces/user.interface';
+
+export type AuthRequestDto = Omit<User, 'id'>;

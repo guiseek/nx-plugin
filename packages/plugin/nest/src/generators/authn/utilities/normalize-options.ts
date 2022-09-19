@@ -1,9 +1,9 @@
 import { getWorkspaceLayout, names, Tree } from '@nrwl/devkit';
-import { AuthGeneratorSchema, NormalizedSchema } from '../schema';
+import { AuthnGeneratorSchema, NormalizedSchema } from '../schema';
 
 export function normalizeOptions(
   tree: Tree,
-  options: AuthGeneratorSchema
+  options: AuthnGeneratorSchema
 ): NormalizedSchema {
   const jwt = options.jwt ?? false;
   const name = names(options.name).fileName;

@@ -1,25 +1,24 @@
 import { Controller, Post<% if (jwt) { %>, Get<% } %>, Request, UseGuards } from '@nestjs/common';
-import { <%= className %>Service } from './<%= fileName %>.service';
+import { AuthRequest } from './interfaces/auth-request.interface';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 <% if (jwt) { %>import { JwtAuthGuard } from './guards/jwt-auth.guard';<% } %>
-import { User } from './<%= fileName %>.repository';
+import { <%= className %>Service } from './<%= fileName %>.service';
 
-type SignInRequest = Request & { user: User };
 
 @Controller('auth')
 export class <%= className %>Controller {
   constructor(private readonly <%= propertyName %>Service: <%= className %>Service) {}
 
-  @Post('<%= projectName %>')
+  @Post('login')
   @UseGuards(LocalAuthGuard)
-  signIn(@Request() req: SignInRequest) {
+  signIn(@Request() req: AuthRequest) {
     return <% if (jwt) { %>this.<%= propertyName %>Service.login(req.user);<% } else { %>req.user<% } %>
   }
 
   <% if (jwt) { %>
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@Request() req) {
+  getProfile(@Request() req: AuthRequest) {
     return req.user;
   }
   <% } %>

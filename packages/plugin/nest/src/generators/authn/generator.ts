@@ -3,9 +3,9 @@ import { libraryGenerator } from '@nrwl/nest';
 import { NodePackages } from '../types/node-package';
 import { normalizeOptions, addFiles } from './utilities';
 import { updateDependencies } from '../utilities';
-import { AuthGeneratorSchema } from './schema';
+import { AuthnGeneratorSchema } from './schema';
 
-export default async function (tree: Tree, options: AuthGeneratorSchema) {
+export default async function (tree: Tree, options: AuthnGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
 
   await libraryGenerator(tree, {

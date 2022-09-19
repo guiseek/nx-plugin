@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/schema",
   "cli": "nx",
-  "$id": "Auth",
-  "title": "",
+  "$id": "Authn",
+  "title": "Authentication for NestJS",
   "type": "object",
   "properties": {
     "name": {
