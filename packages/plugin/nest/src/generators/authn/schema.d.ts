@@ -1,10 +1,10 @@
-export interface AuthGeneratorSchema {
+export interface AuthnGeneratorSchema {
   name: string;
   jwt?: boolean;
   tags?: string;
   directory?: string;
 }
-export interface NormalizedSchema extends AuthGeneratorSchema {
+export interface NormalizedSchema extends AuthnGeneratorSchema {
   jwt: boolean;
   projectName: string;
   projectRoot: string;

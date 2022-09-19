@@ -1,18 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { <%= className %>Dto } from './dtos/<%= fileName %>.dto';
-
-export type User = <%= className %>Dto & { userId: number };
+import { User } from '../interfaces/user.interface';
 
 @Injectable()
-export class <%= className %>Repository {
-  private readonly users = [
+export class UserRepository {
+  private readonly users: User[] = [
     {
-      userId: 1,
+      id: 1,
       username: 'john',
       password: 'changeme',
     },
     {
-      userId: 2,
+      id: 2,
       username: 'maria',
       password: 'guess',
     },

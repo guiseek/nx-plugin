@@ -1,0 +1,29 @@
+import { Injectable } from '@nestjs/common';
+<% if (jwt) { %>import { JwtService } from '@nestjs/jwt';<% } %>
+<% if (jwt) { %>import { User } from './interfaces/user.interface';<% } %>
+import { UserRepository } from './repositories/user.repository';
+import { AuthRequestDto } from './dto/auth-request.dto';
+
+@Injectable()
+export class <%= className %>Service {
+  constructor(
+    private userRepository: UserRepository,
+    <% if (jwt) { %>private jwtService: JwtService<% } %>
+  ) {}
+
+  async validateUser({ username, password }: AuthRequestDto): Promise<any> {
+    const user = await this.userRepository.findOne(username);
+    if (user && user.password === password) {
+      delete user['password']
+      return user;
+    }
+    return null;
+  }
+<% if (jwt) { %>
+  async login(user: User) {
+    const payload = { username: user.username, sub: user.id };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }<% } %>
+}

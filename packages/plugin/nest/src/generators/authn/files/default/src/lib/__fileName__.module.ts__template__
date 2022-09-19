@@ -4,9 +4,9 @@ import { Module } from '@nestjs/common';
 import { LocalStrategy } from './strategies/local.strategy';
 <% if (jwt) { %>import { JwtStrategy } from './strategies/jwt.strategy';<% } %>
 <% if (jwt) { %>import { jwtConstants } from './config/constants';<% } %>
-import { <%= className %>Service } from './<%= fileName %>.service';
-import { <%= className %>Repository } from './<%= fileName %>.repository';
+import { UserRepository } from './repositories/user.repository';
 import { <%= className %>Controller } from './<%= fileName %>.controller';
+import { <%= className %>Service } from './<%= fileName %>.service';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { <%= className %>Controller } from './<%= fileName %>.controller';
   ],
   controllers: [<%= className %>Controller],
   providers: [
-    <%= className %>Repository,
+    UserRepository,
     <%= className %>Service,
     LocalStrategy,
 <% if (jwt) { %>JwtStrategy,<% } %>

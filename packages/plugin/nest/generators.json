@@ -15,9 +15,9 @@
       "schema": "./src/generators/config/schema.json",
       "description": "Create and configure ConfigModule"
     },
-    "auth": {
-      "factory": "./src/generators/auth/generator",
-      "schema": "./src/generators/auth/schema.json",
+    "authn": {
+      "factory": "./src/generators/authn/generator",
+      "schema": "./src/generators/authn/schema.json",
       "description": "Authentication for NestJS"
     }
   }
