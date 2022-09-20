@@ -1,21 +1,28 @@
 import { Controller, Post<% if (jwt) { %>, Get<% } %>, Request, UseGuards } from '@nestjs/common';
 import { AuthRequest } from './interfaces/auth-request.interface';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-<% if (jwt) { %>import { JwtAuthGuard } from './guards/jwt-auth.guard';<% } %>
 import { <%= className %>Service } from './<%= fileName %>.service';
-
+<% if (jwt) { %>import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { Public } from './decorators/public.decorator';
+<% } %>
 
 @Controller('auth')
 export class <%= className %>Controller {
   constructor(private readonly <%= propertyName %>Service: <%= className %>Service) {}
 
+<% if (jwt) { %>
+  /**
+   * Now we must provide a mechanism
+   * for declaring routes as public.
+   */
+  @Public()
+<% } %>
   @Post('login')
   @UseGuards(LocalAuthGuard)
   signIn(@Request() req: AuthRequest) {
     return <% if (jwt) { %>this.<%= propertyName %>Service.login(req.user);<% } else { %>req.user<% } %>
   }
-
-  <% if (jwt) { %>
+<% if (jwt) { %>
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req: AuthRequest) {

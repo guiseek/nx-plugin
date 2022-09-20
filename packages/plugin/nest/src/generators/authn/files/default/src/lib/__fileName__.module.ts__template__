@@ -1,27 +1,46 @@
-import { PassportModule } from '@nestjs/passport';
-<% if (jwt) { %>import { JwtModule } from '@nestjs/jwt';<% } %>
 import { Module } from '@nestjs/common';
+import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
-<% if (jwt) { %>import { JwtStrategy } from './strategies/jwt.strategy';<% } %>
-<% if (jwt) { %>import { jwtConstants } from './config/constants';<% } %>
 import { UserRepository } from './repositories/user.repository';
 import { <%= className %>Controller } from './<%= fileName %>.controller';
 import { <%= className %>Service } from './<%= fileName %>.service';
+<% if (jwt) { %>
+import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { jwtConstants } from './config/constants';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { JwtStrategy } from './strategies/jwt.strategy';
+<% } %>
 
 @Module({
   imports: [
     PassportModule,
-    <% if (jwt) { %>JwtModule.register({
+<% if (jwt) { %>
+    JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '60s' },
-    })<% } %>
+    })
+<% } %>
   ],
   controllers: [<%= className %>Controller],
   providers: [
     UserRepository,
     <%= className %>Service,
     LocalStrategy,
-<% if (jwt) { %>JwtStrategy,<% } %>
+<% if (jwt) { %>
+    JwtStrategy,
+    /**
+     * If the vast majority of your endpoints should be
+     * protected by default, you can register the authentication
+     * guard as a global guard and instead of using @UseGuards()
+     * decorator on top of each controller, you could simply
+     * flag which routes should be public.
+     */
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }
+<% } %>
   ],
   exports: [
     <%= className %>Service,
