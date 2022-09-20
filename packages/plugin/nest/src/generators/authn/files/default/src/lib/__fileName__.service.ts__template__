@@ -11,7 +11,7 @@ export class <%= className %>Service {
     <% if (jwt) { %>private jwtService: JwtService<% } %>
   ) {}
 
-  async validateUser({ username, password }: AuthRequestDto): Promise<any> {
+  async validateUser({ username, password }: AuthRequestDto) {
     const user = await this.userRepository.findOne(username);
     if (user && user.password === password) {
       delete user['password']
