@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-plugin/release": ["packages/plugin/release/src/index.ts"],
-      "@nx-plugin/nest": ["packages/plugin/nest/src/index.ts"]
+      "@nx-plugin/angular": ["packages/plugin/angular/src/index.ts"],
+      "@nx-plugin/nest": ["packages/plugin/nest/src/index.ts"],
+      "@nx-plugin/release": ["packages/plugin/release/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

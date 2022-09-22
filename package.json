@@ -9,6 +9,7 @@
     "format": "nx format:check",
     "test": "nx affected:test",
     "lint": "nx affected:lint",
+    "commit": "npx git-cz",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {

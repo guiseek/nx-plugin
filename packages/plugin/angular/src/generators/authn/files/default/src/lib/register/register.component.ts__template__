@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+import { AuthComponent } from '../auth.component';
+
+@Component({
+  selector: '<%= componentPrefix %>,fieldset[<%= componentPrefix %>-register]',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+})
+export class RegisterComponent extends AuthComponent {}

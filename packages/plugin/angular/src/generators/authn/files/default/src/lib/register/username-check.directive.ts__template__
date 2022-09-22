@@ -1,0 +1,32 @@
+import { Directive, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  AsyncValidator,
+  AbstractControl,
+  ValidationErrors,
+  NG_ASYNC_VALIDATORS,
+} from '@angular/forms';
+
+@Directive({
+  selector: '[<%= directivePrefix %>UsernameCheck]',
+  providers: [
+    {
+      provide: NG_ASYNC_VALIDATORS,
+      useExisting: UsernameCheckDirective,
+      multi: true,
+    },
+  ],
+})
+export class UsernameCheckDirective implements AsyncValidator {
+  @Input() <%= directivePrefix %>UsernameCheck = '';
+
+  constructor(private _http: HttpClient) {}
+
+  validate(control: AbstractControl) {
+    return this.requestServer(control.value);
+  }
+
+  requestServer<V extends ValidationErrors>(username: string) {
+    return this._http.post<V | null>(this.<%= directivePrefix %>UsernameCheck, { username });
+  }
+}

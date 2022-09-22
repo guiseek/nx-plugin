@@ -2,5 +2,11 @@
   "$schema": "http://json-schema.org/schema",
   "name": "angular",
   "version": "0.0.1",
-  "generators": {}
+  "generators": {
+    "authn": {
+      "factory": "./src/generators/authn/generator",
+      "schema": "./src/generators/authn/schema.json",
+      "description": "Authentication for Angular"
+    }
+  }
 }
