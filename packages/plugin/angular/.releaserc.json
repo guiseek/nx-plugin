@@ -1,0 +1,37 @@
+{
+  "repositoryUrl": "https://github.com/guiseek/nx-plugin.git",
+  "branches": [
+    "+([0-9])?(.{+([0-9]),x}).x",
+    "main",
+    { "name": "beta", "prerelease": true },
+    { "name": "alpha", "prerelease": true }
+  ],
+  "tagFormat": "plugin-angular-v${version}",
+  "plugins": [
+    [
+      "@nx-plugin/release",
+      {
+        "project": "plugin-angular"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "dist/packages/plugin/angular",
+        "tarballDir": "dist/packages/plugin/angular"
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "publishCmd": "nx run plugin-angular:release --args=\"--version=${nextRelease.version}\""
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": "dist/packages/plugin/angular/*.tgz"
+      }
+    ]
+  ]
+}

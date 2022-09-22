@@ -1,0 +1,17 @@
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
+import { AuthForm } from './auth.form';
+
+@Directive()
+export class AuthComponent {
+  @Output() authSubmit = new EventEmitter();
+
+  @Input() legend?: string;
+
+  form = new AuthForm({ updateOn: 'blur' });
+
+  onSubmit() {
+    if (this.form.valid) {
+      this.authSubmit.emit(this.form.value);
+    }
+  }
+}

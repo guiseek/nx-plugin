@@ -54,6 +54,12 @@
         "jestConfig": "packages/plugin/angular/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "release": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "npx semantic-release -e ./packages/plugin/angular/.releaserc.json"
+      }
     }
   },
   "tags": []
