@@ -1,10 +1,11 @@
-import { Controller, Post<% if (jwt) { %>, Get<% } %>, Request, UseGuards } from '@nestjs/common';
+import { Controller, Post<% if (jwt) { %>, Get<% } %>, Body, Request, UseGuards } from '@nestjs/common';
 import { AuthRequest } from './interfaces/auth-request.interface';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { <%= className %>Service } from './<%= fileName %>.service';
 <% if (jwt) { %>import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { Public } from './decorators/public.decorator';
-<% } %>
+import { Public } from './decorators/public.decorator';<% } %>
+import { CreateUserDto } from './dto/create-user.dto';
+import { CheckUserDto } from './dto/check-user.dto';
 
 @Controller('auth')
 export class <%= className %>Controller {
@@ -21,6 +22,20 @@ export class <%= className %>Controller {
   @UseGuards(LocalAuthGuard)
   signIn(@Request() req: AuthRequest) {
     return <% if (jwt) { %>this.<%= propertyName %>Service.login(req.user);<% } else { %>req.user<% } %>
+  }
+
+  @Public()
+  @Post('check')
+  async checkUsername(@Body() { username }: CheckUserDto) {
+    const user = await this.<%= propertyName %>Service.checkUser({ username });
+    if (user) return { message: 'Username already exists' };
+    return;
+  }
+
+  @Public()
+  @Post('register')
+  async register(@Body() user: CreateUserDto) {
+    return this.<%= propertyName %>Service.createUser(user);
   }
 <% if (jwt) { %>
   @UseGuards(JwtAuthGuard)

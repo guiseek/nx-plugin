@@ -21,6 +21,8 @@ export default async function (tree: Tree, options: AuthnGeneratorSchema) {
   const deps: NodePackages = {
     '@nestjs/passport': '^9.0.0',
     'passport-local': '^1.0.0',
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     passport: '^0.6.0',
   };
   const devDeps: NodePackages = { '@types/passport-local': '^1.0.34' };

@@ -1,3 +1,6 @@
 import { User } from '../interfaces/user.interface';
 
-export type AuthRequestDto = Omit<User, 'id'>;
+export class AuthRequestDto implements Omit<User, 'id' | 'salt'> {
+  username: string;
+  password: string;
+}
