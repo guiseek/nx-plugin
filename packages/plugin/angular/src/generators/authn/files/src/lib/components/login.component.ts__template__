@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AuthComponent } from '../auth.component';
+import { <%= className %>Form } from '../<%= fileName %>.form';
+import { AuthComponent } from './auth.component';
 
 @Component({
   selector: '<%= componentPrefix %>,fieldset[<%= componentPrefix %>-login]',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './auth.component.html',
 })
 export class LoginComponent extends AuthComponent {
+  form = new <%= className %>Form();
 }

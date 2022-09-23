@@ -1,0 +1,25 @@
+import { Component, inject } from '@angular/core';
+import { <%= className %>Facade } from './+store/<%= fileName %>.facade';
+
+@Component({
+  template: `
+    <fieldset <%= componentPrefix %>-register (authSubmit)="auth.register($event)">
+      <legend>Register Form</legend>
+      <button>Register</button>
+    </fieldset>
+
+    <fieldset <%= componentPrefix %>-login (authSubmit)="auth.login($event)">
+      <legend>Login Form</legend>
+      <button>Login</button>
+    </fieldset>
+
+    <ng-container *ngIf="state.pick('user') | async as user">
+      <pre>{{ user | json }}</pre>
+    </ng-container>
+  `,
+})
+export class <%= className %>Container {
+  readonly auth = inject(<%= className %>Facade);
+
+  readonly state = this.auth.use();
+}

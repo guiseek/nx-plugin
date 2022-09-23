@@ -12,17 +12,8 @@ export function addFiles(tree: Tree, options: NormalizedSchema & PrefixSchema) {
 
   generateFiles(
     tree,
-    join(__dirname, '..', 'files', 'default'),
+    join(__dirname, '..', 'files'),
     options.projectRoot,
     templateOptions
   );
-
-  // if (options.jwt) {
-  //   generateFiles(
-  //     tree,
-  //     join(__dirname, '..', 'files', 'jwt'),
-  //     options.projectRoot,
-  //     templateOptions
-  //   );
-  // }
 }
