@@ -1,1 +1,0 @@
-<pre *ngIf="user">{{ user | json }}</pre>

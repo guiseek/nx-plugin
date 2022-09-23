@@ -1,0 +1,28 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login.component';
+import { RegisterComponent } from './components/register.component';
+import { <%= className %>Facade } from './+store/<%= fileName %>.facade';
+import { <%= className %>Service } from './+store/<%= fileName %>.service';
+import { <%= className %>Container } from './<%= fileName %>.container';
+
+const routes = [
+  {
+    path: '',
+    component: <%= className %>Container,
+  },
+];
+
+@NgModule({
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    <%= className %>Container,
+  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild(routes)],
+  exports: [LoginComponent, RegisterComponent],
+  providers: [<%= className %>Service, <%= className %>Facade],
+})
+export class <%= className %>Module {}
