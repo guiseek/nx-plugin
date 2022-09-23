@@ -1,13 +1,13 @@
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
-import { <%= className %>Form } from '../<%= fileName %>.form';
+import { AuthForm } from './auth.form';
 
 @Directive()
-export abstract class AuthComponent {
+export class AuthComponent {
   @Output() authSubmit = new EventEmitter();
 
   @Input() legend?: string;
 
-  abstract form: <%= className %>Form;
+  form = new AuthForm({ updateOn: 'blur' });
 
   onSubmit() {
     if (this.form.valid) {

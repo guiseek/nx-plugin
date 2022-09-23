@@ -5,7 +5,7 @@ import {
   AbstractControlOptions,
 } from '@angular/forms';
 
-export class <%= className %>Form extends FormGroup<{
+export class AuthForm extends FormGroup<{
   username: FormControl<string | null>;
   password: FormControl<string | null>;
 }> {

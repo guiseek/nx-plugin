@@ -1,0 +1,34 @@
+<legend>{{ legend }}</legend>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <section>
+    <label>
+      Username
+      <input
+        type="text"
+        <%= directivePrefix %>UsernameCheck="/api/auth/check"
+        formControlName="username"
+        autocomplete="username"
+      />
+      <output *ngIf="form.controls.username.errors">
+        {{ form.controls.username.errors | json }}
+      </output>
+    </label>
+  </section>
+
+  <section>
+    <label>
+      Password
+      <input
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+      />
+      <output *ngIf="form.controls.password.errors">
+        {{ form.controls.password.errors | json }}
+      </output>
+    </label>
+  </section>
+
+  <button>Register</button>
+</form>

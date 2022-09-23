@@ -1,4 +1,4 @@
-<ng-content select="legend"></ng-content>
+<legend>{{ legend }}</legend>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <section>
@@ -25,5 +25,5 @@
     </label>
   </section>
 
-  <ng-content select="button"></ng-content>
+  <button>Login</button>
 </form>
