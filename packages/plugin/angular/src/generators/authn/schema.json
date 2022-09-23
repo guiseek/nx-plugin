@@ -14,11 +14,6 @@
       },
       "x-prompt": "What name would you like to use?"
     },
-    "jwt": {
-      "type": "boolean",
-      "description": "Add JWT configuration (used for access token)",
-      "alias": "j"
-    },
     "prefix": {
       "type": "string",
       "description": "The prefix to apply to generated selectors.",
