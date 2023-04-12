@@ -20,8 +20,5 @@
   },
   "main": "src/index.js",
   "generators": "./generators.json",
-  "executors": "./executors.json",
-  "peerDependencies": {
-    "@nrwl/nest": "^14.7.5"
-  }
+  "executors": "./executors.json"
 }
