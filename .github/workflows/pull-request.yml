@@ -16,12 +16,18 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - uses: mansagroup/nrwl-nx-action@v2
+      - uses: actions/setup-node@v3
         with:
-          targets: lint,test,build,release
+          node-version: 18.15.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Affected Build
+        run: npx nx affected:build
+
+      - name: Affected Release
+        run: npx nx affected --target release
