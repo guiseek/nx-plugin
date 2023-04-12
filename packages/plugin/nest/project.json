@@ -1,4 +1,5 @@
 {
+  "name": "plugin-nest",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/plugin/nest/src",
   "projectType": "library",
@@ -50,14 +51,14 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/plugin/nest"],
+      "outputs": ["{workspaceRoot}/coverage/packages/plugin/nest"],
       "options": {
         "jestConfig": "packages/plugin/nest/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "release": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {
         "command": "npx semantic-release -e ./packages/plugin/nest/.releaserc.json"
