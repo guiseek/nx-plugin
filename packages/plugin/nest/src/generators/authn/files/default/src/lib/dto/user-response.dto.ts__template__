@@ -9,7 +9,7 @@ export class UserResponseDto implements User {
   password: string;
 
   @Exclude()
-  salt: string;
+  salt: number;
 
   constructor(value: Partial<UserResponseDto>) {
     Object.assign(this, value);
