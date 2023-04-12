@@ -24,6 +24,7 @@ export default async function (tree: Tree, options: AuthnGeneratorSchema) {
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     passport: '^0.6.0',
+    bcrypt: '^5.0.1',
   };
   const devDeps: NodePackages = { '@types/passport-local': '^1.0.34' };
 
@@ -31,6 +32,7 @@ export default async function (tree: Tree, options: AuthnGeneratorSchema) {
     deps['@nestjs/jwt'] = '^9.0.0';
     deps['passport-jwt'] = '^4.0.0';
     devDeps['@types/passport-jwt'] = '^3.0.6';
+    devDeps['@types/bcrypt'] = '^5.0.0';
   }
 
   return updateDependencies(tree, [deps, devDeps]);

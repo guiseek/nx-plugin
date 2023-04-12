@@ -19,9 +19,10 @@ export class <%= className %>Service {
   async validateUser({ username, password }: AuthRequestDto) {
     const user = await this.userRepository.findOne(username);
 
-    if (user && validatePassword(password, user.password, user.salt)) {
+    if (user && await validatePassword(password, user.password)) {
       return user;
     }
+
     return null;
   }
 
@@ -30,7 +31,7 @@ export class <%= className %>Service {
   }
 
   async createUser(user: CreateUserDto) {
-    const { password, salt } = createPassword(user.password);
+    const { password, salt } = await createPassword(user.password);
     return new UserResponseDto(
       await this.userRepository.createOne({
         ...user,
