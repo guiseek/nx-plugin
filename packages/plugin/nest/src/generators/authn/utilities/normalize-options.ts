@@ -1,4 +1,4 @@
-import { getWorkspaceLayout, names, Tree } from '@nrwl/devkit';
+import { getWorkspaceLayout, names, Tree } from '@nx/devkit';
 import { AuthnGeneratorSchema, NormalizedSchema } from '../schema';
 
 export function normalizeOptions(

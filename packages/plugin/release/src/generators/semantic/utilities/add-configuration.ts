@@ -2,7 +2,7 @@ import {
   Tree,
   readProjectConfiguration,
   updateProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { NormalizedSchema } from '../schema';
 
 export function addConfiguration(tree: Tree, options: NormalizedSchema) {
@@ -15,7 +15,7 @@ export function addConfiguration(tree: Tree, options: NormalizedSchema) {
   }
 
   config.targets.release = {
-    executor: '@nrwl/workspace:run-commands',
+    executor: '@nx/workspace:run-commands',
     options: {
       command: `npx semantic-release -e ./${config.root}/.releaserc.json`,
     },

@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
   "$id": "Config",
   "title": "",
   "type": "object",
@@ -17,7 +16,9 @@
     "project": {
       "type": "string",
       "description": "",
-      "aliases": ["projectName"],
+      "aliases": [
+        "projectName"
+      ],
       "$default": {
         "index": 1,
         "$source": "projectName"
@@ -46,5 +47,7 @@
       "alias": "d"
     }
   },
-  "required": ["name"]
+  "required": [
+    "name"
+  ]
 }

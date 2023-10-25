@@ -3,7 +3,7 @@ import {
   names,
   ProjectConfiguration,
   readProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import { PrefixSchema } from '../schema';
 
 interface AngularProjectConfiguration extends ProjectConfiguration {

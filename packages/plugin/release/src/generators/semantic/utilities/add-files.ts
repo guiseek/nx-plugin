@@ -1,5 +1,5 @@
 import { normalizeTemplateOptions } from './normalize-template-options';
-import { generateFiles, Tree } from '@nrwl/devkit';
+import { generateFiles, Tree } from '@nx/devkit';
 import { NormalizedSchema } from '../schema';
 import { join } from 'path';
 

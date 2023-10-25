@@ -1,4 +1,4 @@
-import { names, offsetFromRoot } from '@nrwl/devkit';
+import { names, offsetFromRoot } from '@nx/devkit';
 import { NormalizedSchema } from '../schema';
 
 export function normalizeTemplateOptions(options: NormalizedSchema) {

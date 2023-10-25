@@ -1,12 +1,5 @@
-import {
-  Tree,
-  getWorkspaceLayout,
-  readProjectConfiguration,
-} from '@nrwl/devkit';
-import {
-  NormalizedSchema,
-  SemanticReleaseGeneratorSchema,
-} from '../schema';
+import { Tree, getWorkspaceLayout, readProjectConfiguration } from '@nx/devkit';
+import { NormalizedSchema, SemanticReleaseGeneratorSchema } from '../schema';
 
 export function normalizeOptions(
   tree: Tree,

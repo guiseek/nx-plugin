@@ -1,5 +1,5 @@
-import { Tree, formatFiles, generateFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/nest';
+import { Tree, formatFiles, generateFiles } from '@nx/devkit';
+import { libraryGenerator } from '@nx/nest';
 import { join } from 'path';
 import {
   normalizeOptions,

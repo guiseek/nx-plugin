@@ -21,13 +21,13 @@ npm i -g nx
 Add Nest Plugin
 
 ```sh
-npm i -D @nrwl/nest
+npm i -D @nx/nest
 ```
 
 Create Nest Application
 
 ```sh
-nx g @nrwl/nest:application api
+nx g @nx/nest:application api
 ```
 
 Add Nest extra features
@@ -47,13 +47,13 @@ nx generate @nx-plugin/nest:authn auth --directory=server --jwt
 Add Angular Plugin
 
 ```sh
-npm i -D @nrwl/angular
+npm i -D @nx/angular
 ```
 
 Create Angular Application
 
 ```sh
-nx g @nrwl/angular:application app --backendProject=api --e2eTestRunner=none
+nx g @nx/angular:application app --backendProject=api --e2eTestRunner=none
 ```
 
 Add Angular extra features
@@ -69,5 +69,7 @@ nx generate @nx-plugin/angular:authn auth --directory=client
 ```
 
 ---
-###### Powered by 
+
+###### Powered by
+
 ### [nx.dev](https://nx.dev)

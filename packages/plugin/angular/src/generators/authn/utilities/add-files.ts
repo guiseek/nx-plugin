@@ -1,4 +1,4 @@
-import { generateFiles, names, offsetFromRoot, Tree } from '@nrwl/devkit';
+import { generateFiles, names, offsetFromRoot, Tree } from '@nx/devkit';
 import { NormalizedSchema, PrefixSchema } from '../schema';
 import { join } from 'path';
 
