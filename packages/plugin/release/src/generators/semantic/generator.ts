@@ -1,4 +1,4 @@
-import { Tree, formatFiles, installPackagesTask } from '@nrwl/devkit';
+import { Tree, formatFiles, installPackagesTask } from '@nx/devkit';
 import { SemanticReleaseGeneratorSchema } from './schema';
 import {
   addFiles,

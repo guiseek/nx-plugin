@@ -1,10 +1,10 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { SemanticReleaseGeneratorSchema } from './schema';
 import {
   Tree,
   addProjectConfiguration,
   readProjectConfiguration,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 import generator from './generator';
 
 describe('semantic generator', () => {

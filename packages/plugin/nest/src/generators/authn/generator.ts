@@ -1,5 +1,5 @@
-import { Tree, formatFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/nest';
+import { Tree, formatFiles } from '@nx/devkit';
+import { libraryGenerator } from '@nx/nest';
 import { NodePackages } from '../types/node-package';
 import { normalizeOptions, addFiles } from './utilities';
 import { updateDependencies } from '../utilities';
@@ -21,8 +21,8 @@ export default async function (tree: Tree, options: AuthnGeneratorSchema) {
   const deps: NodePackages = {
     '@nestjs/passport': '^9.0.0',
     'passport-local': '^1.0.0',
-    "class-transformer": "^0.5.1",
-    "class-validator": "^0.13.2",
+    'class-transformer': '^0.5.1',
+    'class-validator': '^0.13.2',
     passport: '^0.6.0',
     bcrypt: '^5.0.1',
   };

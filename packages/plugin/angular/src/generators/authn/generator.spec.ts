@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from '@nrwl/devkit/testing';
-import { Tree, readProjectConfiguration } from '@nrwl/devkit';
+import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
+import { Tree, readProjectConfiguration } from '@nx/devkit';
 
 import generator from './generator';
 import { AuthnGeneratorSchema } from './schema';
@@ -16,5 +16,11 @@ describe('authn generator', () => {
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'test');
     expect(config).toBeDefined();
-  })
+  });
+  
+  it('should check source root exists', async () => {
+    await generator(appTree, options);
+    const config = readProjectConfiguration(appTree, 'test');
+    expect(appTree.exists(config.sourceRoot)).toBeTruthy()
+  });
 });

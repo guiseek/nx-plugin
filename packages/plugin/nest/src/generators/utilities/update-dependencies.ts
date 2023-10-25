@@ -1,10 +1,10 @@
-import { runTasksInSerial } from '@nrwl/workspace/src/utilities/run-tasks-in-serial';
+import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
 import { NodePackages } from '../types/node-package';
 import {
   Tree,
   installPackagesTask,
   addDependenciesToPackageJson,
-} from '@nrwl/devkit';
+} from '@nx/devkit';
 
 export function updateDependencies(
   tree: Tree,

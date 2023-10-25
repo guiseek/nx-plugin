@@ -1,5 +1,5 @@
-import { Tree, formatFiles } from '@nrwl/devkit';
-import { libraryGenerator } from '@nrwl/angular/generators';
+import { Tree, formatFiles } from '@nx/devkit';
+import { libraryGenerator } from '@nx/angular/generators';
 import { normalizeOptions, normalizePrefix, addFiles } from './utilities';
 import { AuthnGeneratorSchema } from './schema';
 

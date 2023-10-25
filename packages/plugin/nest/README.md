@@ -1,6 +1,6 @@
 # @nx-plugin/nest
 
-The Nest plugin for Nx provides extra generators that are common and not provided in the official @nestjs or @nrwl/nest packages.
+The Nest plugin for Nx provides extra generators that are common and not provided in the official @nestjs or @nx/nest packages.
 
 ## Using nest generators
 
@@ -9,7 +9,6 @@ nx generate @nx-plugin/nest:[generator] ...
 
 nx g @nx-plugin/nest:[generator] ... #same
 ```
-
 
 ### Authn
 
