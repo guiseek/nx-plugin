@@ -8,17 +8,16 @@ import { NormalizedSchema } from '../schema';
 export function addConfiguration(tree: Tree, options: NormalizedSchema) {
   const config = readProjectConfiguration(tree, options.project);
 
-  const { build } = config.targets;
-
-  if (config.projectType !== 'library' || !build) {
+  if (config.projectType !== 'library' || !config.targets.build) {
     throw 'This generator can only be run against buildable libraries.';
   }
 
+  if (!config.targets.release) {
+    throw 'There is already a release target.';
+  }
+
   config.targets.release = {
-    executor: '@nx/workspace:run-commands',
-    options: {
-      command: `npx semantic-release -e ./${config.root}/.releaserc.json`,
-    },
+    command: `npx semantic-release -e ./${config.root}/.releaserc.json`,
   };
 
   updateProjectConfiguration(tree, options.project, config);

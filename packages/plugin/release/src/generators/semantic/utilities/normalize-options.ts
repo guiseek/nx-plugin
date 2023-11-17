@@ -9,13 +9,11 @@ export function normalizeOptions(
 
   const { libsDir } = getWorkspaceLayout(tree);
 
-  const { build } = config.targets;
+  const distPath = `dist/${libsDir}/${options.project}`;
+  const outputPath = config.targets.build.options.outputPath;
 
-  const projectDist = `dist/${libsDir}/${options.project}`;
+  const projectDist = outputPath ?? distPath;
+  const projectRoot = config.root;
 
-  return {
-    ...options,
-    projectRoot: config.root,
-    projectDist: build.options.outputPath ?? projectDist,
-  };
+  return { ...options, projectRoot, projectDist };
 }
