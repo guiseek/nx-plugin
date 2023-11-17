@@ -14,7 +14,5 @@
       "x-prompt": "Which project do you want to add semantic release to?"
     }
   },
-  "required": [
-    "project"
-  ]
+  "required": ["project"]
 }

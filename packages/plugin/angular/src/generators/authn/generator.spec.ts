@@ -17,10 +17,10 @@ describe('authn generator', () => {
     const config = readProjectConfiguration(appTree, 'test');
     expect(config).toBeDefined();
   });
-  
+
   it('should check source root exists', async () => {
     await generator(appTree, options);
     const config = readProjectConfiguration(appTree, 'test');
-    expect(appTree.exists(config.sourceRoot)).toBeTruthy()
+    expect(appTree.exists(config.sourceRoot)).toBeTruthy();
   });
 });
