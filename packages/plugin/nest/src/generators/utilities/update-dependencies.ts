@@ -1,4 +1,4 @@
-import { runTasksInSerial } from '@nx/workspace/src/utilities/run-tasks-in-serial';
+import { runTasksInSerial } from '@nx/devkit';
 import { NodePackages } from '../types/node-package';
 import {
   Tree,

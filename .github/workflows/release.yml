@@ -13,17 +13,20 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - uses: mansagroup/nrwl-nx-action@v2
+      # Cache node_modules
+      - uses: actions/setup-node@v3
         with:
-          targets: test,build,release
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - uses: nrwl/nx-set-shas@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # This line is needed for nx affected to work when CI is running on a PR
+      - run: git branch --track main origin/main
+      - run: npx nx format:check
+      - run: npx nx affected -t test,build,release --parallel=3
