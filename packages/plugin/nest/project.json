@@ -53,8 +53,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/plugin/nest"],
       "options": {
-        "jestConfig": "packages/plugin/nest/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/plugin/nest/jest.config.ts"
       }
     },
     "release": {
